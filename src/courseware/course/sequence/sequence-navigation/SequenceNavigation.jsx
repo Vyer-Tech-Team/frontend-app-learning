@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { breakpoints, Button, useWindowSize } from '@openedx/paragon';
-import { ChevronLeft, ChevronRight } from '@openedx/paragon/icons';
+// import { ChevronLeft, ChevronRight } from '@openedx/paragon/icons';
 import classNames from 'classnames';
 import {
   injectIntl,
   intlShape,
-  isRtl,
-  getLocale,
+  // isRtl,
+  // getLocale,
 } from '@edx/frontend-platform/i18n';
 
 import { useSelector } from 'react-redux';
@@ -18,6 +18,8 @@ import SequenceNavigationTabs from './SequenceNavigationTabs';
 import { useSequenceNavigationMetadata } from './hooks';
 import { useModel } from '../../../../generic/model-store';
 import { LOADED } from '../../../data/slice';
+import PrevIcon from './prev-icon.svg';
+import NextIcon from './next-icon.svg';
 
 import messages from './messages';
 
@@ -72,17 +74,18 @@ const SequenceNavigation = ({
 
   const renderPreviousButton = () => {
     const disabled = isFirstUnit;
-    const prevArrow = isRtl(getLocale()) ? ChevronRight : ChevronLeft;
+    // const prevArrow = isRtl(getLocale()) ? ChevronRight : ChevronLeft;
     return navigationDisabledPrevSequence || (
       <Button
         variant="link"
         className="previous-btn"
         onClick={previousHandler}
         disabled={disabled}
-        iconBefore={prevArrow}
+        // iconBefore={BackIcon}
         as={disabled ? undefined : Link}
         to={disabled ? undefined : previousLink}
       >
+        <img src={PrevIcon} alt="prev" />
         {shouldDisplayNotificationTriggerInSequence ? null : intl.formatMessage(messages.previousButton)}
       </Button>
     );
@@ -92,7 +95,7 @@ const SequenceNavigation = ({
     const { exitActive, exitText } = GetCourseExitNavigation(courseId, intl);
     const buttonText = (isLastUnit && exitText) ? exitText : intl.formatMessage(messages.nextButton);
     const disabled = isLastUnit && !exitActive;
-    const nextArrow = isRtl(getLocale()) ? ChevronLeft : ChevronRight;
+    // const nextArrow = isRtl(getLocale()) ? ChevronLeft : ChevronRight;
 
     return navigationDisabledNextSequence || (
       <Button
@@ -100,11 +103,12 @@ const SequenceNavigation = ({
         className="next-btn"
         onClick={nextHandler}
         disabled={disabled}
-        iconAfter={nextArrow}
+        // iconAfter={nextArrow}
         as={disabled ? undefined : Link}
         to={disabled ? undefined : nextLink}
       >
         {shouldDisplayNotificationTriggerInSequence ? null : buttonText}
+        <img alt="next" src={NextIcon} />
       </Button>
     );
   };

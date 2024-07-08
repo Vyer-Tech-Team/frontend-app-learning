@@ -2,13 +2,15 @@ import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { useToggle, ModalPopup, Menu } from '@openedx/paragon';
 import { Link } from 'react-router-dom';
+// import { right } from '@popperjs/core';
 import { useModel, useModels } from '../../generic/model-store';
 import JumpNavMenuItem from './JumpNavMenuItem';
+import HomeIcon from './home-icon.svg';
 
 const CourseBreadcrumb = ({
   content,
@@ -154,15 +156,16 @@ const CourseBreadcrumbs = ({
   }, [courseStatus, sequenceStatus, allSequencesInSections]);
 
   return (
-    <nav aria-label="breadcrumb" className="d-inline-block col-sm-10 mb-3">
+    <nav aria-label="breadcrumb" className="d-inline-block col-sm-12 mb-3 custom-breadcrumb">
       <ol className="list-unstyled d-flex flex-nowrap align-items-center m-0">
         <li className="list-unstyled col-auto m-0 p-0">
+          <img style={{ marginRight: '8px' }} src={HomeIcon} alt="home" />
           <Link
             className="flex-shrink-0 text-primary"
             to={`/course/${courseId}/home`}
             replace
           >
-            <FontAwesomeIcon icon={faHome} className="mr-2" />
+            {/* <FontAwesomeIcon icon={faHome} className="mr-2" /> */}
             <FormattedMessage
               id="learn.breadcrumb.navigation.course.home"
               description="The course home link in breadcrumbs nav"

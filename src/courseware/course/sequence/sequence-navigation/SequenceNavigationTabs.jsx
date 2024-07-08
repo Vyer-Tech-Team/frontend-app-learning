@@ -25,7 +25,9 @@ const SequenceNavigationTabs = ({
 
   return (
     <div
-      style={{ flexBasis: '100%', minWidth: 0 }}
+      style={{
+        flexBasis: '100%', minWidth: 0, paddingLeft: '6px', paddingRight: '6px',
+      }}
       className={classNames({
         'navigation-tab-width-xl': isOnXLDesktop && isSidebarOpen,
         'navigation-tab-width-large': isOnLargeDesktop && isSidebarOpen,
@@ -42,6 +44,7 @@ const SequenceNavigationTabs = ({
         >
           {unitIds.map(buttonUnitId => (
             <UnitButton
+              // className="unit-navigation-btn"
               key={buttonUnitId}
               unitId={buttonUnitId}
               isActive={unitId === buttonUnitId}

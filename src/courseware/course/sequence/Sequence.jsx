@@ -190,14 +190,35 @@ const Sequence = ({
           )}
 
           <div className="unit-container flex-grow-1 pt-4">
-            <SequenceContent
-              courseId={courseId}
-              gated={gated}
+            {
+              // eslint-disable-next-line react/jsx-wrap-multilines
+              unitHasLoaded && renderUnitNavigation(false) && <SequenceContent
+                courseId={courseId}
+                gated={gated}
+                sequenceId={sequenceId}
+                unitId={unitId}
+                unitLoadedHandler={handleUnitLoaded}
+              />
+            }
+            {/* {unitHasLoaded && renderUnitNavigation(false)} */}
+          </div>
+          <div className="sequence-navigation-container">
+            <SequenceNavigation
               sequenceId={sequenceId}
               unitId={unitId}
-              unitLoadedHandler={handleUnitLoaded}
+              nextHandler={() => {
+                logEvent('edx.ui.lms.sequence.next_selected', 'top');
+                handleNext();
+              }}
+              onNavigate={(destinationUnitId) => {
+                logEvent('edx.ui.lms.sequence.tab_selected', 'top', destinationUnitId);
+                handleNavigate(destinationUnitId);
+              }}
+              previousHandler={() => {
+                logEvent('edx.ui.lms.sequence.previous_selected', 'top');
+                handlePrevious();
+              }}
             />
-            {unitHasLoaded && renderUnitNavigation(false)}
           </div>
         </div>
         {isNewDiscussionSidebarViewEnabled ? <NewSidebar /> : <Sidebar />}

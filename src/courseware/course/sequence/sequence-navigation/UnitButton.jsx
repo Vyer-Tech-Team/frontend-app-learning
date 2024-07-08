@@ -5,9 +5,10 @@ import { connect, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { Button } from '@openedx/paragon';
 
-import UnitIcon from './UnitIcon';
+// import UnitIcon from './UnitIcon';
 import CompleteIcon from './CompleteIcon';
 import BookmarkFilledIcon from '../../bookmark/BookmarkFilledIcon';
+import CustomUnitIcon from '../../../../custom-components/custom-unit-icon/CustomUnitIcon';
 
 const UnitButton = ({
   onClick,
@@ -39,7 +40,8 @@ const UnitButton = ({
       as={Link}
       to={`/course/${courseId}/${sequenceId}/${unitId}`}
     >
-      <UnitIcon type={contentType} />
+      {/* <UnitIcon type={contentType} /> */}
+      <CustomUnitIcon type={contentType} />
       {showTitle && <span className="unit-title">{title}</span>}
       {showCompletion && complete ? <CompleteIcon size="sm" className="text-success ml-2" /> : null}
       {bookmarked ? (

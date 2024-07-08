@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { ErrorPage } from '@edx/frontend-platform/react';
 import { StrictDict } from '@edx/react-unit-test-utils';
@@ -64,6 +64,49 @@ const ContentIFrame = ({
     onLoad: handleIFrameLoad,
   };
 
+  const iframeRef = useRef(null);
+
+  useEffect(() => {
+    const iframe = iframeRef.current;
+
+    // Function to inject a script into the iframe
+    const injectScript = () => {
+      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+      const script = iframeDoc.createElement('script');
+      script.type = 'text/javascript';
+      script.innerHTML = `
+        document.querySelector('[data-acc-text="Submit"]').addEventListener('click', function() {
+          window.parent.postMessage('buttonClicked', '*');
+        });
+      `;
+      iframeDoc.body.appendChild(script);
+    };
+
+    if (iframe) {
+      iframe.onload = () => {
+        // console.log(iframe);
+        // eslint-disable-next-line no-unused-expressions
+        process.env.NODE_ENV !== 'development' && injectScript();
+        // injectScript();
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleIframeMessage = (event) => {
+      if (event.data === 'buttonClicked') {
+        // eslint-disable-next-line no-console
+        console.log('test');
+      }
+    };
+
+    window.addEventListener('message', handleIframeMessage);
+
+    return () => {
+      window.removeEventListener('message', handleIframeMessage);
+    };
+  }, []);
+
   let modalContent;
   if (modalOptions.isOpen) {
     modalContent = modalOptions.body
@@ -86,7 +129,7 @@ const ContentIFrame = ({
       )}
       {shouldShowContent && (
         <div className="unit-iframe-wrapper">
-          <iframe title={title} {...contentIFrameProps} data-testid={testIDs.contentIFrame} />
+          <iframe ref={iframeRef} title={title} {...contentIFrameProps} data-testid={testIDs.contentIFrame} />
         </div>
       )}
       {modalOptions.isOpen && (modalOptions.isFullscreen

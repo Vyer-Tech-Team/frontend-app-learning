@@ -30,8 +30,8 @@
     "url": "https://github.com/openedx/frontend-app-learning/issues"
   },
   "dependencies": {
-    "@edx/brand": "npm:@openedx/brand-openedx@^1.2.2",
-    "@edx/frontend-component-header": "^5.0.2",
+    "@edx/brand": "github:Vyer-Tech-Team/brand-openedx#lavt-prod",
+    "@edx/frontend-component-header": "github:Vyer-Tech-Team/frontend-component-header#lavt-prod",
     "@edx/frontend-lib-learning-assistant": "^2.1.2",
     "@edx/frontend-lib-special-exams": "^3.0.1",
     "@edx/frontend-platform": "^7.1.2",

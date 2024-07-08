@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { getConfig } from '@edx/frontend-platform';
-import { breakpoints, useWindowSize } from '@openedx/paragon';
+import { useWindowSize } from '@openedx/paragon';
 
 import { AlertList } from '@src/generic/user-messages';
 import { useModel } from '@src/generic/model-store';
 import { getCoursewareOutlineSidebarSettings } from '../data/selectors';
-import { Trigger as CourseOutlineTrigger } from './sidebar/sidebars/course-outline';
-import Chat from './chat/Chat';
+// import { Trigger as CourseOutlineTrigger } from './sidebar/sidebars/course-outline';
+// import Chat from './chat/Chat';
 import SidebarProvider from './sidebar/SidebarContextProvider';
-import SidebarTriggers from './sidebar/SidebarTriggers';
+// import SidebarTriggers from './sidebar/SidebarTriggers';
 import NewSidebarProvider from './new-sidebar/SidebarContextProvider';
-import NewSidebarTriggers from './new-sidebar/SidebarTriggers';
+// import NewSidebarTriggers from './new-sidebar/SidebarTriggers';
 import { CelebrationModal, shouldCelebrateOnSectionLoad, WeeklyGoalCelebrationModal } from './celebration';
 import CourseBreadcrumbs from './CourseBreadcrumbs';
 import ContentTools from './content-tools';
@@ -26,7 +26,7 @@ const Course = ({
   nextSequenceHandler,
   previousSequenceHandler,
   unitNavigationHandler,
-  windowWidth,
+  // windowWidth,
 }) => {
   const course = useModel('coursewareMeta', courseId);
   const {
@@ -54,7 +54,7 @@ const Course = ({
   const [weeklyGoalCelebrationOpen, setWeeklyGoalCelebrationOpen] = useState(
     celebrations && !celebrations.streakLengthToCelebrate && celebrations.weeklyGoal,
   );
-  const shouldDisplayChat = windowWidth >= breakpoints.medium.minWidth;
+  // const shouldDisplayChat = windowWidth >= breakpoints.medium.minWidth;
   const daysPerWeek = course?.courseGoals?.selectedGoal?.daysPerWeek;
 
   useEffect(() => {
@@ -87,7 +87,7 @@ const Course = ({
           />
         </>
         )}
-        {shouldDisplayChat && (
+        {/* {shouldDisplayChat && (
           <>
             <Chat
               enabled={course.learningAssistantEnabled}
@@ -102,7 +102,7 @@ const Course = ({
         <div className="w-100 d-flex align-items-center">
           <CourseOutlineTrigger isMobileView />
           {isNewDiscussionSidebarViewEnabled ? <NewSidebarTriggers /> : <SidebarTriggers /> }
-        </div>
+        </div> */}
       </div>
 
       <AlertList topic="sequence" />
@@ -137,7 +137,7 @@ Course.propTypes = {
   nextSequenceHandler: PropTypes.func.isRequired,
   previousSequenceHandler: PropTypes.func.isRequired,
   unitNavigationHandler: PropTypes.func.isRequired,
-  windowWidth: PropTypes.number.isRequired,
+  // windowWidth: PropTypes.number.isRequired,
 };
 
 Course.defaultProps = {
