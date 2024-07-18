@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Button } from '@openedx/paragon';
 
 // import UnitIcon from './UnitIcon';
-import CompleteIcon from './CompleteIcon';
+// import CompleteIcon from './CompleteIcon';
 import BookmarkFilledIcon from '../../bookmark/BookmarkFilledIcon';
 import CustomUnitIcon from '../../../../custom-components/custom-unit-icon/CustomUnitIcon';
 
@@ -43,7 +43,7 @@ const UnitButton = ({
       {/* <UnitIcon type={contentType} /> */}
       <CustomUnitIcon type={contentType} />
       {showTitle && <span className="unit-title">{title}</span>}
-      {showCompletion && complete ? <CompleteIcon size="sm" className="text-success ml-2" /> : null}
+      {/* {showCompletion && complete ? <CompleteIcon size="sm" className="text-success ml-2" /> : null} */}
       {bookmarked ? (
         <BookmarkFilledIcon
           className="text-primary small position-absolute"

@@ -6,6 +6,9 @@
 // @import "~@edx/frontend-component-footer/dist/footer";
 @import "~@edx/frontend-component-header/dist/index";
 
+// body {
+//   background: #fff !important;
+// }
 
 #root {
   display: flex;
@@ -432,7 +435,70 @@
 
 .raised-card {
   border: 0 !important;
-  box-shadow: 0 .0625rem .125rem rgba(0, 0, 0, .2) !important;
+  box-shadow: 0px 1px 2px 0px #00000026 !important;
+  box-shadow: 0px 1px 4px 0px #00000026 !important;
+  border-radius: 4px !important;
+}
+
+.resume-card {
+  
+  justify-content: center !important;
+  height: 104px;
+  box-shadow: 0px 1px 2px 0px #00000026 !important;
+  box-shadow: 0px 1px 4px 0px #00000026 !important;
+  border-radius: 4px !important;
+  background: #EFF8FA !important;
+  .btn-brand {
+    background: #00688D;
+    border-color: #00688D;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 20px;
+    &:hover {
+      background: #005e7f;
+      border-color: #005e7f;
+    }
+  }
+  .pgn__card-header {
+    align-items: center !important;
+  }
+  .pgn__card-header-actions {
+    margin: 0 !important;
+  }
+  .pgn__card-header-content {
+    margin-top: 0 !important;
+  }
+  .pgn__card-header-title-md {
+    font-size: 1.125rem !important;
+    line-height: 24px !important;
+    color: $brand !important;
+  }
+  .pgn__card-footer {
+    display: none !important;
+  }
+}
+
+#main-content {
+  background: #fff;
+  min-height: calc(100vh - 74px)
+}
+
+#courseTabsNavigation {
+  .nav-underline-tabs {
+    font-size: 0.875rem;
+    color: $brand;
+    font-weight: 500;
+  }
+  .nav-underline-tabs .nav-link:hover, .nav-underline-tabs .nav-link:focus, .nav-underline-tabs .nav-link.active {
+    font-size: 0.875rem;
+    color: $brand;
+    font-weight: 500;
+  }
+  .nav-underline-tabs .nav-link.active {
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-bottom-color: $brand;
+  }
 }
 
 .icon-hover {
@@ -503,4 +569,25 @@
   opacity: 0px;
   font-size: 1.125rem;
   line-height: 32px;
+}
+
+.units-wrapper {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  li {
+    // flex: 1 1;
+    flex: 1;
+    min-width: calc(50% - 12px);
+
+    .collapsible-card-lg {
+      border-radius: 4px;
+      box-shadow: 0px 1px 2px 0px #00000026;
+      box-shadow: 0px 1px 4px 0px #00000026;
+    }
+  }
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: $brand !important;
 }

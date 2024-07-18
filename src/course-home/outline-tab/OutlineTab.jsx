@@ -9,10 +9,10 @@ import { PluginSlot } from '@openedx/frontend-plugin-framework';
 import { AlertList } from '../../generic/user-messages';
 
 import CourseDates from './widgets/CourseDates';
-import CourseHandouts from './widgets/CourseHandouts';
+// import CourseHandouts from './widgets/CourseHandouts';
 import StartOrResumeCourseCard from './widgets/StartOrResumeCourseCard';
 import WeeklyLearningGoalCard from './widgets/WeeklyLearningGoalCard';
-import CourseTools from './widgets/CourseTools';
+// import CourseTools from './widgets/CourseTools';
 import { fetchOutlineTab } from '../data';
 import messages from './messages';
 import Section from './Section';
@@ -141,7 +141,7 @@ const OutlineTab = ({ intl }) => {
             }}
           />
         </div>
-        <div className="col col-12 col-md-8">
+        <div className="col col-12">
           <AlertList
             topic="outline-course-alerts"
             className="mb-3"
@@ -169,7 +169,7 @@ const OutlineTab = ({ intl }) => {
                   </Button>
                 </div>
               </div>
-              <ol id="courseHome-outline" className="list-unstyled">
+              <ol id="courseHome-outline" className="list-unstyled units-wrapper">
                 {courses[rootCourseId].sectionIds.map((sectionId) => (
                   <Section
                     key={sectionId}
@@ -194,7 +194,7 @@ const OutlineTab = ({ intl }) => {
                 subscribedToReminders={selectedGoal && 'subscribedToReminders' in selectedGoal ? selectedGoal.subscribedToReminders : false}
               />
             )}
-            <CourseTools />
+            {/* <CourseTools /> */}
             <PluginSlot
               id="outline_tab_notifications_slot"
               pluginProps={{ courseId }}
@@ -214,7 +214,7 @@ const OutlineTab = ({ intl }) => {
               />
             </PluginSlot>
             <CourseDates />
-            <CourseHandouts />
+            {/* <CourseHandouts /> */}
           </div>
         )}
       </div>

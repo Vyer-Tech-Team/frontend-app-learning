@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 import { Toast } from '@openedx/paragon';
-import { LearningHeader as Header } from '@edx/frontend-component-header';
+// import { LearningHeader as Header } from '@edx/frontend-component-header';
 // import FooterSlot from '@openedx/frontend-slot-footer';
 import PageLoading from '../generic/PageLoading';
 import { getAccessDeniedRedirectUrl } from '../shared/access';
@@ -16,6 +16,7 @@ import messages from './messages';
 import LoadedTabPage from './LoadedTabPage';
 import { setCallToActionToast } from '../course-home/data/slice';
 import LaunchCourseHomeTourButton from '../product-tours/newUserCourseHomeTour/LaunchCourseHomeTourButton';
+import CustomHeader from '../custom-components/CustomHeader';
 
 const TabPage = ({ intl, ...props }) => {
   const {
@@ -64,7 +65,8 @@ const TabPage = ({ intl, ...props }) => {
         </>
       )}
 
-      <Header courseOrg={org} courseNumber={number} courseTitle={title} />
+      {/* <Header courseOrg={org} courseNumber={number} courseTitle={title} /> */}
+      <CustomHeader courseOrg={org} courseNumber={number} courseTitle={title} />
 
       {courseStatus === 'loading' && (
         <PageLoading srMessage={intl.formatMessage(messages.loading)} />

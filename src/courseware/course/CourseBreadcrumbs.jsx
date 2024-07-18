@@ -158,7 +158,7 @@ const CourseBreadcrumbs = ({
   return (
     <nav aria-label="breadcrumb" className="d-inline-block col-sm-12 mb-3 custom-breadcrumb">
       <ol className="list-unstyled d-flex flex-nowrap align-items-center m-0">
-        <li className="list-unstyled col-auto m-0 p-0">
+        <li className="list-unstyled col-auto m-0 p-0 d-flex">
           <img style={{ marginRight: '8px' }} src={HomeIcon} alt="home" />
           <Link
             className="flex-shrink-0 text-primary"

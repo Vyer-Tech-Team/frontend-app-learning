@@ -68,13 +68,13 @@ const CourseOutlineTray = ({ intl }) => {
         <Button
           variant="link"
           iconBefore={ChevronLeftIcon}
-          className="outline-sidebar-heading p-0 mb-0 text-left text-dark-500"
+          className="outline-sidebar-heading p-0 mb-0 text-left text-primary-700"
           onClick={handleBackToSectionLevel}
         >
           {backButtonTitle}
         </Button>
       ) : (
-        <span className="outline-sidebar-heading mb-0 h4 text-dark-500">
+        <span className="outline-sidebar-heading mb-0 h4 text-primary-700">
           {intl.formatMessage(messages.courseOutlineTitle)}
         </span>
       )}
